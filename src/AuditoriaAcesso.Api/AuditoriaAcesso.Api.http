@@ -1,0 +1,6 @@
+@AuditoriaAcesso.Api_HostAddress = http://localhost:5182
+
+GET {{AuditoriaAcesso.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

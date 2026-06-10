@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Itens de Solução/">
+    <File Path=".gitattributes" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/AuditoriaAcesso.Api/AuditoriaAcesso.Api.csproj" />
+    <Project Path="src/AuditoriaAcesso.Aplication/AuditoriaAcesso.Aplication.csproj" />
+    <Project Path="src/AuditoriaAcesso.Domain/AuditoriaAcesso.Domain.csproj" />
+    <Project Path="src/AuditoriaAcesso.Infrastructure/AuditoriaAcesso.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Teste-Junior-Infos/">
+    <File Path="Teste-Junior/bussiness-rules.md" />
+    <File Path="Teste-Junior/test.md" />
+  </Folder>
+</Solution>
