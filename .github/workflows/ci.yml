@@ -1,0 +1,52 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  backend-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Executar Checkout do Código
+      uses: actions/checkout@v4
+
+    - name: Configurar o ambiente .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Restaurar Dependências
+      run: dotnet restore
+
+    - name: Validar Compilação (Build)
+      run: dotnet build --no-restore --configuration Release
+
+    - name: Executar Testes Unitários (xUnit)
+      run: dotnet test --no-build --verbosity normal
+
+  frontend-validation:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend/auditoria-frontend
+
+    steps:
+    - name: Executar Checkout do Código
+      uses: actions/checkout@v4
+
+    - name: Configurar o ambiente Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: 'frontend/auditoria-frontend/package-lock.json'
+
+    - name: Instalar Dependências do Front-end
+      run: npm ci
+
+    - name: Validar Build do React
+      run: npm run build
