@@ -11,8 +11,8 @@
     <Project Path="src/AuditoriaAcesso.Infrastructure/AuditoriaAcesso.Infrastructure.csproj" />
     <Project Path="src/AuditoriaAcesso.Tests/AuditoriaAcesso.Tests.csproj" />
   </Folder>
-  <Folder Name="/Teste-Junior-Infos/">
-    <File Path="Teste-Junior/bussiness-rules.md" />
-    <File Path="Teste-Junior/test.md" />
+  <Folder Name="/Teste-Desenvolvedor-Infos/">
+    <File Path="Teste-Desenvolvedor/bussiness-rules.md" />
+    <File Path="Teste-Desenvolvedor/test.md" />
   </Folder>
 </Solution>

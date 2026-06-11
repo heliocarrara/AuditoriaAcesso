@@ -7,3 +7,5 @@ obj/
 *.env.local
 appsettings.Development.json
 appsettings.Local.json
+
+Teste-Desenvolvedor/bussiness-rules.md
