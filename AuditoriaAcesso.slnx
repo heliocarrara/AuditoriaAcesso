@@ -9,6 +9,7 @@
     <Project Path="src/AuditoriaAcesso.Aplication/AuditoriaAcesso.Aplication.csproj" />
     <Project Path="src/AuditoriaAcesso.Domain/AuditoriaAcesso.Domain.csproj" />
     <Project Path="src/AuditoriaAcesso.Infrastructure/AuditoriaAcesso.Infrastructure.csproj" />
+    <Project Path="src/AuditoriaAcesso.Tests/AuditoriaAcesso.Tests.csproj" />
   </Folder>
   <Folder Name="/Teste-Junior-Infos/">
     <File Path="Teste-Junior/bussiness-rules.md" />
