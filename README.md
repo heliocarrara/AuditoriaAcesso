@@ -13,7 +13,7 @@ A estrutura de diretórios do projeto está organizada da seguinte forma:
 ```
 AuditoriaAcesso/
 ├── AuditoriaAcesso.slnx             # Arquivo de solução moderno do .NET
-├── Teste-Junior/                    # Instruções e regras de negócio do desafio
+├── Teste-Desenvolvedor/             # Instruções e regras de negócio do desafio
 ├── src/                             # Código-fonte do Back-end (.NET 10)
 │   ├── AuditoriaAcesso.Api/          # Camada de Apresentação (ASP.NET Core Web API)
 │   ├── AuditoriaAcesso.Aplication/   # Camada de Aplicação (Serviços e DTOs)
