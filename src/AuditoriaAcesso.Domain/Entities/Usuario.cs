@@ -27,4 +27,8 @@ public class Usuario
         //Aqui verifica se o usuário tem logs de acesso, se tiver, não pode ser excluído
         return _logs.Count == 0;
     }
+    public void RegistrarAcesso(string ipAddress)
+    {
+        _logs.Add(new LogAcesso(ipAddress, this.Id));
+    }
 }

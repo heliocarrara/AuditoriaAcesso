@@ -20,10 +20,9 @@ public class UsuarioAppService : IUsuarioAppService
 
         var novoUsuario = new Usuario(usuarioCadastroDto.Nome, usuarioCadastroDto.Email, senhaHash);
 
-        await _usuarioRepositorie.AdicionarAsync(novoUsuario);
+        novoUsuario.RegistrarAcesso(ipAddress);
 
-        var log = new LogAcesso(ipAddress, novoUsuario.Id);
-        await _logAcessoRepositorie.AdicionarAsync(log);
+        await _usuarioRepositorie.AdicionarAsync(novoUsuario);
 
         await _usuarioRepositorie.SalvarAlteracoesAsync();
 
