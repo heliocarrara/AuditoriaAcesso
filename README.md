@@ -24,6 +24,8 @@ AuditoriaAcesso/
     └── auditoria-frontend/          # Aplicação Web React
 ```
 
+![alt text](image-1.png)
+
 ---
 
 ## 2. Tecnologias Utilizadas

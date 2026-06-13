@@ -1,4 +1,4 @@
-﻿namespace AuditoriaAcesso.Domain.Entities;
+namespace AuditoriaAcesso.Domain.Entities;
 
 public class Usuario
 {

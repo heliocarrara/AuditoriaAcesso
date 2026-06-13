@@ -1,4 +1,4 @@
-﻿using AuditoriaAcesso.Domain.Entities;
+using AuditoriaAcesso.Domain.Entities;
 
 namespace AuditoriaAcesso.Domain.Interfaces;
 

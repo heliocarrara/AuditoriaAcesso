@@ -1,4 +1,4 @@
-﻿using AuditoriaAcesso.Aplication.Dtos;
+using AuditoriaAcesso.Aplication.Dtos;
 
 namespace AuditoriaAcesso.Aplication.Services;
 

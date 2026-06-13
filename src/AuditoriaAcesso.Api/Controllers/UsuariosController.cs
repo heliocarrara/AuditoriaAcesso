@@ -1,4 +1,4 @@
-﻿using AuditoriaAcesso.Aplication.Dtos;
+using AuditoriaAcesso.Aplication.Dtos;
 using AuditoriaAcesso.Aplication.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -24,6 +24,4 @@ public class UsuarioTests
 
         Assert.False(podeSerExcluido);
     }
-
-
 }

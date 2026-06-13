@@ -1,4 +1,4 @@
-﻿using AuditoriaAcesso.Domain.Entities;
+using AuditoriaAcesso.Domain.Entities;
 using AuditoriaAcesso.Domain.Interfaces;
 using AuditoriaAcesso.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;

@@ -1,4 +1,4 @@
-﻿namespace AuditoriaAcesso.Aplication.Dtos;
+namespace AuditoriaAcesso.Aplication.Dtos;
 
 public record UsuarioCadastroDto(string Nome, string Email, string Senha);
 

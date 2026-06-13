@@ -1,4 +1,4 @@
-﻿using AuditoriaAcesso.Domain.Entities;
+using AuditoriaAcesso.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
