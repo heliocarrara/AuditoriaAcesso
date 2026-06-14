@@ -8,4 +8,5 @@ public interface IUsuarioAppService
 
     Task<IEnumerable<UsuarioResponseDto>> ObterTodosAsync();
     Task<bool> ExcluirAsync(int id);
+    Task<LoginResponseDto> AutenticarAsync(LoginDto loginDto);
 }

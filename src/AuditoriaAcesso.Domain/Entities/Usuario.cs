@@ -1,3 +1,5 @@
+using AuditoriaAcesso.Domain.Enums;
+
 namespace AuditoriaAcesso.Domain.Entities;
 
 public class Usuario
@@ -7,6 +9,8 @@ public class Usuario
     public string Email { get; set; }
     public string SenhaHash { get; set; }
 
+    public UsuarioRole Role { get; set; }
+
     private readonly List<LogAcesso> _logs = new List<LogAcesso>();
     public IReadOnlyCollection<LogAcesso> Logs => _logs.AsReadOnly();
 
@@ -15,11 +19,12 @@ public class Usuario
 
     }
 
-    public Usuario(string nome, string email, string senhaHash)
+    public Usuario(string nome, string email, string senhaHash, UsuarioRole role)
     {
         Nome = nome;
         Email = email;
         SenhaHash = senhaHash;
+        Role = role;
     }
 
     public bool PodeSerExcluido()

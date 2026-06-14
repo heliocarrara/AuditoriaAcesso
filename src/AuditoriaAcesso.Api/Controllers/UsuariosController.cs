@@ -1,5 +1,6 @@
 using AuditoriaAcesso.Aplication.Dtos;
 using AuditoriaAcesso.Aplication.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +32,7 @@ public class UsuariosController : ControllerBase
         return CreatedAtAction(nameof(ObterTodos), new { id = resultado.Id }, resultado);
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> ObterTodos()
     {
@@ -38,6 +40,7 @@ public class UsuariosController : ControllerBase
         return Ok(usuarios);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Excluir(int id)
     {
@@ -54,6 +57,24 @@ public class UsuariosController : ControllerBase
         catch(InvalidOperationException ex)
         {
             return BadRequest(new { mensagem = ex.Message });
+        }
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+    {
+        try
+        {
+            var resultado = await _usuarioAppService.AutenticarAsync(loginDto);
+
+            return Ok(resultado);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new
+            {
+                mensagem = ex.Message
+            });
         }
     }
 }

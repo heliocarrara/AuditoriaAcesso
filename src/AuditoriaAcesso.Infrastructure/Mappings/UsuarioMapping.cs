@@ -24,6 +24,10 @@ public class UsuarioMapping : IEntityTypeConfiguration<Usuario>
             .IsRequired()
             .HasMaxLength(255);
 
+        builder.Property(x => x.Role)
+            .IsRequired()
+            .HasConversion<int>();
+
         builder.HasMany(x => x.Logs)
             .WithOne(x => x.Usuario)
             .HasForeignKey("UsuarioId")
