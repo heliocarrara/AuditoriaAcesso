@@ -11,9 +11,10 @@ interface Usuario {
 interface UsuarioTabelaProps {
     usuarios: Usuario[];
     onUsuarioExcluido: () => void;
+    userRole: string;
 }
 
-export const UsuarioTabela: React.FC<UsuarioTabelaProps> = ({ usuarios, onUsuarioExcluido }) => {
+export const UsuarioTabela: React.FC<UsuarioTabelaProps> = ({ usuarios, onUsuarioExcluido, userRole }) => {
 
     const handleExcluir = async (id: number) => {
         if (!confirm('Deseja realmente excluir este usuário?')) return;
@@ -37,7 +38,7 @@ export const UsuarioTabela: React.FC<UsuarioTabelaProps> = ({ usuarios, onUsuari
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Logs de Acesso</th>
-                        <th>Ações</th>
+                        {userRole === 'Admin' && <th>Ações</th>}
                     </tr>
                 </thead>
                 <tbody>
@@ -46,9 +47,12 @@ export const UsuarioTabela: React.FC<UsuarioTabelaProps> = ({ usuarios, onUsuari
                             <td>{u.nome}</td>
                             <td>{u.email}</td>
                             <td>{u.qtdLogsAcesso}</td>
-                            <td>
-                                <button onClick={() => handleExcluir(u.id)} style={{ color: 'red' }}>Excluir</button>
-                            </td>
+                            {
+                                userRole === 'Admin' &&
+                                <td>
+                                    <button onClick={() => handleExcluir(u.id)} style={{ color: 'red' }}>Excluir</button>
+                                </td>
+                            }
                         </tr>
                     ))}
                 </tbody>

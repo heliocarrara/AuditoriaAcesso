@@ -19,6 +19,11 @@ public class UsuarioRepository : IUsuarioRepository
 
     public void Deletar(Usuario usuario)
     {
+        if (usuario.Logs.Any())
+        {
+            _dbContext.LogAcesso.RemoveRange(usuario.Logs.ToList());
+        }
+
         _dbContext.Usuarios.Remove(usuario);
     }
 

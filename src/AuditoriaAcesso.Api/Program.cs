@@ -1,6 +1,7 @@
 using AuditoriaAcesso.Aplication.Services;
 using AuditoriaAcesso.Domain.Interfaces;
 using AuditoriaAcesso.Infrastructure.Context;
+using AuditoriaAcesso.Infrastructure.Data;
 using AuditoriaAcesso.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -77,6 +78,8 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -100,5 +103,20 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using(var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        DbInitializer.SeedAdmin(dbContext);
+    }
+    catch (Exception ex) 
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
 
 app.Run();

@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 namespace AuditoriaAcesso.Aplication.Services;
 
@@ -14,11 +15,14 @@ public class UsuarioAppService : IUsuarioAppService
     private readonly IUsuarioRepository _usuarioRepositorie;
     private readonly ILogAcessoRepository _logAcessoRepositorie;
     private readonly IConfiguration _configuration;
-    public UsuarioAppService(IUsuarioRepository usuarioRepository, ILogAcessoRepository logAcessoRepository, IConfiguration configuration)
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public UsuarioAppService(IUsuarioRepository usuarioRepository, ILogAcessoRepository logAcessoRepository, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
     {
         _usuarioRepositorie = usuarioRepository;
         _logAcessoRepositorie = logAcessoRepository;
         _configuration = configuration;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<LoginResponseDto> AutenticarAsync(LoginDto loginDto)
@@ -80,7 +84,9 @@ public class UsuarioAppService : IUsuarioAppService
             return false;
         }
 
-        if (!usuario.PodeSerExcluido())
+        var souAdm = _httpContextAccessor.HttpContext?.User?.IsInRole("Admin") ?? false;
+
+        if (!usuario.PodeSerExcluido(souAdm))
         {
             throw new InvalidOperationException("Este usuário não pode ser excluído!");
         }

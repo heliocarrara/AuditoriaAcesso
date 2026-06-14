@@ -27,11 +27,11 @@ public class Usuario
         Role = role;
     }
 
-    public bool PodeSerExcluido()
+    public bool PodeSerExcluido(bool souAdm)
     {
-        //Aqui verifica se o usuário tem logs de acesso, se tiver, não pode ser excluído
-        return _logs.Count == 0;
+        return souAdm;
     }
+
     public void RegistrarAcesso(string ipAddress)
     {
         _logs.Add(new LogAcesso(ipAddress, this.Id));

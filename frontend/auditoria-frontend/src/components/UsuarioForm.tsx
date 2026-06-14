@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { api } from '../services/api';
 
 interface UsuarioFormProps {
-    onUsuarioCadastrado: () => void;
+    onVoltarParaLogin: () => void;
 }
 
-export const UsuarioForm: React.FC<UsuarioFormProps> = ({ onUsuarioCadastrado }) => {
+export const UsuarioForm: React.FC<UsuarioFormProps> = ({ onVoltarParaLogin }) => {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
@@ -26,8 +26,9 @@ export const UsuarioForm: React.FC<UsuarioFormProps> = ({ onUsuarioCadastrado })
             setNome('');
             setEmail('');
             setSenha('');
-            onUsuarioCadastrado();
+
             alert('Usuário cadastrado com sucesso!');
+            onVoltarParaLogin();
         } catch (err: any) {
             const mensagemErro = err.response?.data?.mensagem || 'Erro ao cadastrar usuário.';
             setErro(mensagemErro);
@@ -43,6 +44,9 @@ export const UsuarioForm: React.FC<UsuarioFormProps> = ({ onUsuarioCadastrado })
                 <input type="email" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} />
                 <input type="password" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} />
                 <button type="submit">Cadastrar</button>
+                <button type="button" onClick={onVoltarParaLogin} style={{ backgroundColor: 'transparent', color: 'blue', border: 'none', textDecoration: 'underline' }}>
+                    Voltar para Login
+                </button>
             </form>
         </div>
     );
